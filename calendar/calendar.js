@@ -6,19 +6,14 @@ let display = document.querySelector('.display'),
 
     
 let dateToday = new Date();
+let year = dateToday.getFullYear();
+let month = dateToday.getMonth(); // 월 0~11월
+let date = dateToday.getDate(); 
 
 function displayCalendar() {
-  let year = dateToday.getFullYear();
-  console.log(year)
-  let month = dateToday.getMonth(); // 월 0~11월
-  console.log(month)
-  let date = dateToday.getDate(); 
   const firstDay = new Date(year, month, 1); //첫째날
-  console.log(firstDay)
   const firstDayIdx = firstDay.getDay(); //요일 : 0부터 일요일
-  console.log(firstDayIdx)
   const lastDay = new Date(year, month+1, 0); //마지막 날(다음 달에서 하루를 빼기)
-  console.log(lastDay)
   const numberOfDays = lastDay.getDate(); //현재 달의 마지막 날짜
 
   let formattedDate = dateToday.toLocaleString('en-US', {
@@ -63,6 +58,37 @@ function displaySelectedDate(){
     })
   })
 }
+
+prevBtn.addEventListener('click', ()=>{
+  //days안 날짜 초기화, selected 초기화, 
+  days.textContent = '';
+  selectedDate.textContent = '';
+  //현재 달이 1월이면 연도가 바껴야함 (0~11이기 때문에 1월은 month가 0)
+  if(month < 0){
+    year = year - 1;
+    month = 11
+  }
+  month = month - 1;
+  dateToday.setMonth(month);
+  console.log(month)
+  displayCalendar();
+  displaySelectedDate()
+})
+nextBtn.addEventListener('click', ()=>{
+  //days안 날짜 초기화, selected 초기화, 
+  days.textContent = '';
+  selectedDate.textContent = '';
+  //현재 달이 12월이면 연도가 바껴야함 
+  if(month > 11){
+    year = year + 1;
+    month = 0;
+  }
+  month = month + 1;
+  dateToday.setMonth(month);
+  console.log(month)
+  displayCalendar();
+  displaySelectedDate()
+})
 
 displayCalendar();
 displaySelectedDate();
