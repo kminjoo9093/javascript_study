@@ -1,0 +1,122 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  height: 100vh;
+  padding-top: 150px;
+  background: linear-gradient(135deg, #799B06, #C97D77);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.container{
+  background-color: #fff;
+  width: 60%;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+h1{
+  /* border-bottom: 2px solid #222; */
+}
+.input-area{
+  /* text-align: center; */
+}
+.todo-input{
+  min-width: 50%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #799B06;
+  font-size: 18px;
+}
+.input-btn{
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  background-color: #799B06;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.35s;
+}
+.input-btn:active{
+  transform: scale(1.2);
+}
+.task-area{
+  border: 1px solid #ccc;
+  margin-top: 40px;
+}
+.tabs{
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+.tabs div{
+  padding: 1em;
+  color: #666;
+  cursor: pointer;
+}
+.underline{
+  height: 3px;
+  width: 50px;
+  background-color: #C97D77;
+  position: absolute;
+  top: calc(100% - 3px);
+  left: 0;
+}
+.task{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  border-bottom: 1px solid #ccc;
+}
+.task:last-child{
+  border: none;
+}
+.task p{
+  min-width: 50%;
+}
+.task-btn{
+  height: 100%;
+}
+.task-btn button{
+  display: inline-block;
+  border: none;
+  width: 50px;
+  height: 100%;
+  background-color: transparent;
+  padding: 20px 0;
+  cursor: pointer;
+}
+.task-btn button i{
+  height: 100%;
+  width: inherit;
+  font-size: 24px;
+}
+.task-btn button .xi-check{
+  color: green;
+}
+.task-btn button .xi-trash{
+  color: crimson;
+}
+.task-btn button .xi-rotate-right{
+  color: #666;
+}
+.done-line{
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+@media (max-width: 780px){
+  .container{
+    width: 90%;
+  }
+  .todo-input{
+    min-width: 80%;
+  }
+}
