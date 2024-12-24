@@ -16,7 +16,7 @@ let year = dateToday.getFullYear();
 let month = dateToday.getMonth();
 let date = dateToday.getDate();
 
-function lenderCalendar() {
+function renderCalendar() {
   // 1. display에 월, 년도 출력하기
   displayDate.textContent = dateToday.toLocaleString("en-US", {
     year: "numeric",
@@ -31,68 +31,67 @@ function lenderCalendar() {
   const lastDay = new Date(year, month + 1, 0);
   const numberOfDays = lastDay.getDate();
   // 1일 시작 전 빈칸 출력
-  for(let i=0; i<firstDayIdx; i++){
-    let div = document.createElement('div');
-    div.textContent = '';
+  for (let i = 0; i < firstDayIdx; i++) {
+    let div = document.createElement("div");
+    div.textContent = "";
     days.appendChild(div);
   }
   // 날짜 출력 (각 날짜에 날짜데이터를 넣어야 함)
-  for(let i=1; i<=numberOfDays; i++){
-    let div = document.createElement('div');
+  for (let i = 1; i <= numberOfDays; i++) {
+    let div = document.createElement("div");
     let currentDate = new Date(year, month, i);
-    div.setAttribute('data-date', currentDate.toDateString());
+    div.setAttribute("data-date", currentDate.toDateString());
     div.textContent = i;
     days.appendChild(div);
 
     //3. 현재 날짜 표시
-    if(
+    if (
       currentDate.getFullYear() === year &&
       currentDate.getMonth() === month &&
       currentDate.getDate() === date
     ) {
-      div.classList.add('current-date');
+      div.classList.add("current-date");
     }
-    
   }
 }
 
-function lenderSelectedDate(){
+function renderSelectedDate() {
   //클릭한 날짜 선택일에 출력
-  const daysEl = document.querySelectorAll('.days div');
-  daysEl.forEach((day)=>{
-    day.addEventListener('click', (e)=>{
-      let selectedDate = e.target.getAttribute('data-date');
+  const daysEl = document.querySelectorAll(".days div");
+  daysEl.forEach((day) => {
+    day.addEventListener("click", (e) => {
+      let selectedDate = e.target.getAttribute("data-date");
       selected.textContent = `선택일: ${selectedDate}`;
-    })
-  })
+    });
+  });
 }
 
-lenderCalendar();
-lenderSelectedDate();
+renderCalendar();
+renderSelectedDate();
 
-prevBtn.addEventListener('click', ()=>{
-  days.textContent = '';
-  selected.textContent = '';
+prevBtn.addEventListener("click", () => {
+  days.textContent = "";
+  selected.textContent = "";
   //현재달이 1월일 경우 년도도 -1 (0~11월)
-  if(month < 0){
+  if (month < 0) {
     year = year - 1;
     month = 11; //월을 다시 12월로
   }
   month = month - 1;
   dateToday.setMonth(month);
-  lenderCalendar();
-  lenderSelectedDate();
-})
-nextBtn.addEventListener('click', ()=>{
-  days.textContent = '';
-  selected.textContent = '';
+  renderCalendar();
+  renderSelectedDate();
+});
+nextBtn.addEventListener("click", () => {
+  days.textContent = "";
+  selected.textContent = "";
   //현재달이 12월일 경우 년도도 +1 (0~11월)
-  if(month > 11){
+  if (month > 11) {
     year = year + 1;
     month = 0; //다시 1월로
   }
   month = month + 1;
   dateToday.setMonth(month);
-  lenderCalendar();
-  lenderSelectedDate();
-})
+  renderCalendar();
+  renderSelectedDate();
+});
