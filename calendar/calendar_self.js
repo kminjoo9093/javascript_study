@@ -62,7 +62,7 @@ function lenderSelectedDate(){
   daysEl.forEach((day)=>{
     day.addEventListener('click', (e)=>{
       let selectedDate = e.target.getAttribute('data-date');
-      selected.textContent = selectedDate;
+      selected.textContent = `선택일: ${selectedDate}`;
     })
   })
 }
