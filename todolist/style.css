@@ -65,7 +65,7 @@ h1{
   width: 50px;
   background-color: #C97D77;
   position: absolute;
-  bottom: 0;
+  top: calc(100% - 3px);
   left: 0;
 }
 .task{
@@ -103,6 +103,9 @@ h1{
 }
 .task-btn button .xi-trash{
   color: crimson;
+}
+.task-btn button .xi-rotate-right{
+  color: #666;
 }
 .done-line{
   text-decoration: line-through;
