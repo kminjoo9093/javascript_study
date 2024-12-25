@@ -2,7 +2,7 @@
 //체크한 할일은 체크가 되돌리기아이콘으로 바뀌고, 줄이 그어진다
 //삭제를 누르면 리스트에서 제거된다
 //탭메뉴 누르면 해당 메뉴에 맞게 필터링 된 할일리스트가 출력된다
-//그리고 언더바가 해다 메뉴 위치로 이동한다
+//그리고 언더바가 해당 메뉴 위치로 이동한다
 
 const taskInput = document.querySelector(".todo-input"),
   inputBtn = document.querySelector(".input-btn"),
