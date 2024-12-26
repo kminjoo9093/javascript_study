@@ -6,6 +6,7 @@
 //해당 탭에서는 필터링된 리스트가 보인다
 //엔터를 눌러도 리스트 추가가 되게
 //인풋에 아무 내용없으면 버튼 비활성화, 인풋에 글자를 입력하는 순간 버튼 활성화
+//리스트 추가 후 인풋에 포커스
 
 const taskInput = document.querySelector(".todo-input"),
   addBtn = document.querySelector(".input-btn"),
@@ -15,6 +16,19 @@ const taskInput = document.querySelector(".todo-input"),
 let taskList = [];
 let filteredList = [];
 let mode = "all";
+
+taskInput.addEventListener('keydown', function(e){
+  if(e.key === "Enter"){
+    addList();
+  }
+});
+taskInput.addEventListener('input', function(){
+  if(this.value.length > 0){
+    addBtn.disabled = false;
+  } else {
+    addBtn.disabled = true;
+  }
+})
 
 addBtn.addEventListener("click", addList);
 tabMenus.forEach((menu, idx, arr) => {
@@ -31,6 +45,9 @@ function addList() {
   };
   taskList.push(taskInfo);
   renderList();
+  taskInput.value = "";
+  taskInput.focus();
+  addBtn.disabled = true;
 }
 
 function renderList() {
@@ -61,7 +78,6 @@ function renderList() {
     }
   });
   taskBoard.innerHTML = resultList;
-  taskInput.value = "";
 }
 
 function filterList(e, arr) {

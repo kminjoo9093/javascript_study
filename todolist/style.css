@@ -34,10 +34,13 @@ body{
   background-color: #799B06;
   margin-left: 10px;
   cursor: pointer;
-  transition: 0.35s;
+  transition: transform 0.35s;
 }
 .input-btn:active{
   transform: scale(1.2);
+}
+.input-btn:disabled{
+  background-color: #ddd;
 }
 .task-area{
   border: 1px solid #ccc;
